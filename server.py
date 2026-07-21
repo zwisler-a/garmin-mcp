@@ -29,6 +29,7 @@ mcp = FastMCP(
     "garmin-connect",
     host=os.getenv("MCP_HOST", "0.0.0.0"),
     port=int(os.getenv("MCP_PORT", "8000")),
+    stateless_http=True
 )
 
 _client: Garmin | None = None
