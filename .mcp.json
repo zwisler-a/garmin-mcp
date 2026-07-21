@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "garmin-connect": {
+      "command": "/Users/zwisler/PycharmProjects/garmin-mcp/.venv/bin/python",
+      "args": ["/Users/zwisler/PycharmProjects/garmin-mcp/server.py"]
+    }
+  }
+}
