@@ -57,6 +57,30 @@ To register this with Claude Code instead of the local venv, point `.mcp.json` a
 }
 ```
 
+### Running via docker compose
+
+`docker-compose.yml` builds from the local `Dockerfile` (falls back to pulling
+`zwisler/garmin-mcp` if you skip `build`), reads `.env`, and persists tokens in a
+named volume. Use `run`, not `up` — MCP is a one-shot stdio process per client
+connection, not a long-running background service:
+
+```
+docker compose run --rm garmin-mcp
+```
+
+To register this with Claude Code, point `.mcp.json` at:
+
+```json
+{
+  "mcpServers": {
+    "garmin-connect": {
+      "command": "docker",
+      "args": ["compose", "run", "--rm", "garmin-mcp"]
+    }
+  }
+}
+```
+
 ### Building and pushing manually
 
 ```

@@ -25,7 +25,11 @@ if os.getenv("GARMIN_DEBUG"):
 
 TOKEN_STORE = os.path.expanduser(os.getenv("GARMIN_TOKEN_STORE", "~/.garminconnect"))
 
-mcp = FastMCP("garmin-connect")
+mcp = FastMCP(
+    "garmin-connect",
+    host=os.getenv("MCP_HOST", "0.0.0.0"),
+    port=int(os.getenv("MCP_PORT", "8000")),
+)
 
 _client: Garmin | None = None
 _pending_mfa_client: Garmin | None = None
@@ -282,4 +286,4 @@ def get_personal_records() -> Any:
 
 
 if __name__ == "__main__":
-    mcp.run()
+    mcp.run(transport="streamable-http")

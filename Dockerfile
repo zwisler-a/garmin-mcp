@@ -17,4 +17,6 @@ RUN uv sync --frozen --no-dev
 
 VOLUME ["/data"]
 
+EXPOSE 8000
+
 ENTRYPOINT ["uv", "run", "python", "server.py"]
